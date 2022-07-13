@@ -8,7 +8,6 @@
 <img width="985" alt="Screen Shot 2022-07-11 at 6 49 39 PM" src="https://user-images.githubusercontent.com/48500149/178240424-6a7599ce-dc30-4cac-a746-174b18f8f9c3.png">
 
 
-
 ## API Reference
 
 #### Get all items
