@@ -12,7 +12,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <title>스파르타 피디아</title>
+    <title>응급해</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
@@ -104,7 +104,7 @@
                         let comment = rows[i]['comment']
                         let star = rows[i]['star']
 
-                        let star_image = '*'.repeat(star)
+                        let star_image = '⭐'.repeat(star)
 
                         let temp_html = `<div class="col">
                                             <div class="card h-100">
@@ -155,9 +155,6 @@
     <button onclick="open_box()">후기 기록하기</button>
 </div>
 <div class="mypost" id="post-box">
-    <div class="form-floating mb-3">
-        <p>고려대학교의과대학부속병원</p>
-    </div>
     <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">평점</label>
         <select class="form-select" id="star">
