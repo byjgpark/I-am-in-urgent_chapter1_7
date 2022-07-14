@@ -56,14 +56,10 @@
             }
 
             .is-sparta {
-                {#font-family: 'Black Han Sans', sans-serif;#}
                 color: green !important;
             }
 
             .button.is-sparta {
-                {#background-color: #e8344e;#}
-                {#border-color: transparent;#}
-                {#color: #fff !important;#}
 
                 background-color: #198754;
                 border-color: lightgray;
@@ -72,9 +68,6 @@
             }
 
             .button.is-sparta.is-outlined {
-                {#background-color: transparent;#}
-                {#border-color: #e8344e;#}
-                {#color: #e8344e !important;#}
                 background-color: transparent;
                 border-color: #198754;
                 color: black !important;
@@ -101,15 +94,11 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                {#align-items: center;#}
             }
 
         </style>
 
         <script>
-            // {% if msg %}
-            //     alert("{{ msg }}")
-            // {% endif %}
             function sign_in() {
                 let username = $("#input-username").val()
                 let password = $("#input-password").val()
@@ -196,7 +185,6 @@
                         window.location.replace("/recomm")
                     }
                 });
-
             }
 
             function toggle_sign_up() {

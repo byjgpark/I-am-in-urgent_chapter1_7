@@ -12,7 +12,7 @@ app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 
 SECRET_KEY = 'SPARTA'
 
-client = MongoClient('your own mangoURL')
+client = MongoClient('mongodb+srv://test:sparta@cluster0.5arjc.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
 @app.route('/')
@@ -27,16 +27,88 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-
+# redirect login page
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+# redirect recomm page
 @app.route('/recomm')
 def recomm():
     msg = request.args.get("msg")
     return render_template('recomm.html', msg=msg)
+
+# redirect gaeunreview page
+@app.route('/gaeunreview')
+def gaeunreview():
+    msg = request.args.get("msg")
+    return render_template('gaeunreview.html', msg=msg)
+
+# redirect gamhilreview
+@app.route('/gamhilreview')
+def gamhilreview():
+    msg = request.args.get("msg")
+    return render_template('gamhilreview.html', msg=msg)
+
+# redirect gamkoreview
+@app.route('/gamkoreview')
+def gamkoreview():
+    msg = request.args.get("msg")
+    return render_template('gamkoreview.html', msg=msg)
+
+# redirect gayeoreview
+@app.route('/gayeoreview')
+def gayeoreview():
+    msg = request.args.get("msg")
+    return render_template('gayeoreview.html', msg=msg)
+
+# redirect koreview
+@app.route('/koreview')
+def koreview():
+    msg = request.args.get("msg")
+    return render_template('koreview.html', msg=msg)
+
+# fetching gaeunreview data from mangoDB
+@app.route("/gaeunreviewDB", methods=["GET"])
+def gaeunreview_get():
+    gaeunreview_list = list(db.gaeunreview.find({},{'_id':False}))
+    return jsonify({'gaeunreviews':gaeunreview_list})
+
+# Posting gaeunreview to mangDB
+@app.route("/gaeunreviewDB", methods=["POST"])
+def gaeunreview_post():
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+
+    doc = {
+        'star':star_receive,
+        'comment':comment_receive
+    }
+    db.gaeunreview.insert_one(doc)
+
+    return jsonify({'msg':'저장 완료'})
+
+# fetching gamhilreview data from mangoDB
+@app.route("/gamhilreviewDB", methods=["GET"])
+def gamhilreview_get():
+    gamhilreview_list = list(db.gamhilreview.find({},{'_id':False}))
+    return jsonify({'gamhilreviews':gamhilreview_list})
+
+# Posting movie review to mangDB
+@app.route("/gamhilreviewDB", methods=["POST"])
+def gamhilreview_post():
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+
+    doc = {
+        'star':star_receive,
+        'comment':comment_receive
+    }
+    db.gamhilreview.insert_one(doc)
+
+    return jsonify({'msg':'저장 완료'})
+
 
 @app.route('/user/<username>')
 def user(username):
